@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="SimpleSecretMauiApp.Pages.SmartContractPage"
+             Title="SmartContractPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <mct:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <VerticalStackLayout>
+
+        <Button Text="Init Contract" Command="{Binding InitSmartContractCommand}" IsVisible="{Binding HasContract, Mode=OneWay, Converter={StaticResource InvertedBoolConverter}}" HorizontalOptions="Center" Margin="0,10,0,10" />
+
+        <Label Text="{Binding ContractAddress}" IsVisible="{Binding HasContract}" FontSize="15" HorizontalTextAlignment="Center" Margin="0,10,0,10"/>
+        <Label Text="{Binding Counter}" IsVisible="{Binding HasContract}" FontSize="30" HorizontalTextAlignment="Center" Margin="0,20,0,20"/>
+
+        <Button Text="Query Counter" Command="{Binding GetCounterCommand}" IsVisible="{Binding HasContract}" HorizontalOptions="Center" Margin="0,0,0,10" />
+        <Button Text="Increment Counter" Command="{Binding IncrementCounterCommand}" IsVisible="{Binding HasContract}" HorizontalOptions="Center" Margin="0,0,0,10" />
+        <Button Text="Reset Counter" Command="{Binding ResetCounterCommand}" IsVisible="{Binding HasContract}" HorizontalOptions="Center" />
+
+    </VerticalStackLayout>
+    
+</ContentPage>
